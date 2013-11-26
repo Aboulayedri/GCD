@@ -1,7 +1,7 @@
 ConsultantsDri::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
+  root "static_pages#home"
+  match "/aide", to: "static_pages#help", via: "get"
+  match "/a-propos", to: "static_pages#about", via: "get"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
