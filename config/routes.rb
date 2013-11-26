@@ -1,4 +1,6 @@
 ConsultantsDri::Application.routes.draw do
+  resources :entities
+
   root "static_pages#home"
   match "/aide", to: "static_pages#help", via: "get"
   match "/a-propos", to: "static_pages#about", via: "get"
