@@ -1,4 +1,14 @@
 ConsultantsDri::Application.routes.draw do
+  resources :proposals
+
+  resources :lists
+
+  resources :consultants
+
+  resources :weeks
+
+  resources :projects
+
   resources :entities
 
   root "static_pages#home"

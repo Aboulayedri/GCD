@@ -1,0 +1,6 @@
+= simple_form_for @list, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name, label: "Nom de la liste"
+  = f.association :week, label: "Semaine", hint: "La semaine pour laquelle les consultants sont proposés"
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), lists_path, :class => 'btn'

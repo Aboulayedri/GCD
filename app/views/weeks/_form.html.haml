@@ -1,0 +1,7 @@
+= simple_form_for @week, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :debut
+  = f.input :fin
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), weeks_path, :class => 'btn'

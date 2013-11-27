@@ -1,0 +1,9 @@
+= simple_form_for @consultant, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :first_name, label: "Prénom"
+  = f.input :last_name, label: "Nom"
+  = f.input :email, placeholder: "prénom.nom@devoteam.com"
+  = f.association :entity, label: "Entité"
+  = f.input :id_karma
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), consultants_path, :class => 'btn'

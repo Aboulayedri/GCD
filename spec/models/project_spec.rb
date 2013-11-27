@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: entities
+# Table name: projects
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
@@ -9,7 +9,8 @@
 #  updated_at  :datetime
 #
 
-class Entity < ActiveRecord::Base
-  has_many :consultants
-  validates :name, presence: true, uniqueness: true
+require 'spec_helper'
+
+describe Project do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -26,7 +26,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") ConsultantsDri
+          = link_to "ConsultantsDri", root_path, class: "brand"
           .container.nav-collapse
             %ul.nav.pull-right
               %li= link_to "Accueil", root_path
@@ -39,10 +39,13 @@
         .span3
           .well.sidebar-nav
             %ul.nav.nav-list
-              %li.nav-header Sidebar
+              %li.nav-header Les ressources
               %li= link_to "Entités", entities_path
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "Projets", projects_path
+              %li= link_to "Semaines", weeks_path
+              %li= link_to "Consultants", consultants_path
+              %li= link_to "Listes de propositions", lists_path
+              %li= link_to "Propositions", proposals_path
         .span9
           = bootstrap_flash
           = yield

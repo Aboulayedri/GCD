@@ -11,11 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126005742) do
+ActiveRecord::Schema.define(version: 20131126231611) do
+
+  create_table "consultants", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "id_karma"
+  end
 
   create_table "entities", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lists", force: true do |t|
+    t.string   "name"
+    t.integer  "week_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "proposals", force: true do |t|
+    t.integer  "list_id"
+    t.integer  "consultant_id"
+    t.date     "date_arrivee"
+    t.integer  "nombre_jours"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "weeks", force: true do |t|
+    t.string   "name"
+    t.date     "debut"
+    t.date     "fin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: entities
+# Table name: projects
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
@@ -9,7 +9,6 @@
 #  updated_at  :datetime
 #
 
-class Entity < ActiveRecord::Base
-  has_many :consultants
+class Project < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 end
