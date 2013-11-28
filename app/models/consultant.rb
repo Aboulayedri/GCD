@@ -14,8 +14,9 @@
 
 class Consultant < ActiveRecord::Base
   belongs_to :entity
+  has_many :proposals
 
   def name
-    "#{first_name.first}. #{last_name}"
+    "#{first_name.first}.#{last_name}"
   end
 end

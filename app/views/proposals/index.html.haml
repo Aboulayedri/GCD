@@ -1,27 +1,26 @@
 - model_class = Proposal
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h1 Les Propositions
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:list_id)
-      %th= model_class.human_attribute_name(:consultant_id)
-      %th= model_class.human_attribute_name(:date_arrivee)
-      %th= model_class.human_attribute_name(:nombre_jours)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
+      %th Consultant
+      %th Date Arrivée
+      %th Nombre Jours
+      %th Liste
+      %th Semaine
+      %th Actions
   %tbody
     - @proposals.each do |proposal|
       %tr
-        %td= link_to proposal.id, proposal_path(proposal)
-        %td= proposal.list_id
-        %td= proposal.consultant_id
+        %td= "#{proposal.consultant.first_name} #{proposal.consultant.last_name}"
         %td= proposal.date_arrivee
         %td= proposal.nombre_jours
-        %td=l proposal.created_at
+        %td= proposal.list.name
+        %td= proposal.list.week.name
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_proposal_path(proposal), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), proposal_path(proposal), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to "Consulter", proposal, class: 'btn btn-mini'
+          = link_to "Modifier", edit_proposal_path(proposal), :class => 'btn btn-mini'
+          = link_to "Supprimer", proposal_path(proposal), :method => :delete, :data => { :confirm => "Êtes-vous sûr ?" }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_proposal_path, :class => 'btn btn-primary'
+= link_to "Nouvelle Proposition", new_proposal_path, :class => 'btn btn-primary'

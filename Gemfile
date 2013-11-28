@@ -12,6 +12,9 @@ end
 group :test do
 gem 'selenium-webdriver', '2.35.1'
 gem 'capybara', '2.1.0'
+gem 'factory_girl_rails', '4.2.0'
+gem 'cucumber-rails', '1.4.0', :require => false
+gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 # Use SCSS for stylesheets
@@ -27,7 +30,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', "~> 2.3.0"
+gem "jquery-ui-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -54,6 +58,8 @@ gem 'simple_form'
 gem 'will_paginate-bootstrap'
 gem 'nested_form'
 gem 'annotate'
+gem 'bcrypt-ruby', '3.1.2'
+gem 'faker', '1.1.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

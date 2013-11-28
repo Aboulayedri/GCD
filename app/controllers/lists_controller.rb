@@ -69,6 +69,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:name, :week_id)
+      params.require(:list).permit(:name, :week_id, proposals_attributes: [:consultant_id, :nombre_jours, :date_arrivee])
     end
 end

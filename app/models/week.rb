@@ -11,5 +11,7 @@
 #
 
 class Week < ActiveRecord::Base
+  has_many :lists
+  has_many :proposals, through: :lists
   validates :name, presence: true, uniqueness: true
 end

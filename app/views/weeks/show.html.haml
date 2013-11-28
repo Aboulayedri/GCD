@@ -1,21 +1,40 @@
 - model_class = Week
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1 Semaine
 
 %p
-  %strong= model_class.human_attribute_name(:name) + ':'
+  %strong Nom:
   %br
   = @week.name
 %p
-  %strong= model_class.human_attribute_name(:debut) + ':'
+  %strong Date de début:
   %br
   = @week.debut
 %p
-  %strong= model_class.human_attribute_name(:fin) + ':'
+  %strong Date de fin:
   %br
   = @week.fin
 
+%h2 Propositions pour la Semaine
+%table.table.table-striped
+  %thead
+    %tr
+      %th Consultant
+      %th Date Arrivée
+      %th Nombre Jours
+      %th Actions
+  %tbody
+    - @week.proposals.each do |proposal|
+      %tr
+        %td= proposal.consultant.name
+        %td= proposal.date_arrivee
+        %td= proposal.nombre_jours
+        %td
+          = link_to "Consulter", proposal, class: "btn btn-mini"
+          = link_to "Modifier", edit_proposal_path(proposal), :class => 'btn btn-mini'
+          = link_to "Supprimer", proposal_path(proposal), :method => :delete, :data => { :confirm => "Êtes-vous sûr ?" }, :class => 'btn btn-mini btn-danger'
+
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), weeks_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_week_path(@week), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), week_path(@week), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  = link_to "Retour aux Semaines", weeks_path, :class => 'btn'
+  = link_to "Modifier", edit_week_path(@week), :class => 'btn'
+  = link_to "Supprimer", week_path(@week), :method => "delete", :data => { :confirm => "Êtes-vous sûr ?" }, :class => 'btn btn-danger'

@@ -1,23 +1,22 @@
 - model_class = List
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h1 Les Listes de Propositions
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:week_id)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
+      %th Nom
+      %th Semaine
+      %th Nombre de propositions
+      %th Actions
   %tbody
     - @lists.each do |list|
       %tr
-        %td= link_to list.id, list_path(list)
         %td= list.name
-        %td= list.week_id
-        %td=l list.created_at
+        %td= list.week.name
+        %td= list.proposals.count
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_list_path(list), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), list_path(list), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to "Consulter", list, class: 'btn btn-mini'
+          = link_to "Modifier", edit_list_path(list), :class => 'btn btn-mini'
+          = link_to "Supprimer", list_path(list), :method => :delete, :data => { :confirm => "Êtes-vous sûr ?" }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_list_path, :class => 'btn btn-primary'
+= link_to "Nouvelle Liste", new_list_path, :class => 'btn btn-primary'

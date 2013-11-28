@@ -1,6 +1,23 @@
-= simple_form_for @list, :html => { :class => 'form-horizontal' } do |f|
+= simple_nested_form_for @list, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name, label: "Nom de la liste"
   = f.association :week, label: "Semaine", hint: "La semaine pour laquelle les consultants sont proposés"
+  %table#proposals
+    = f.fields_for :proposals, wrapper: false do |proposal_form|
+      %tr.fields
+        %td= proposal_form.association :consultant, label: false, prompt: "Sélectionner le consultant"
+        %td= proposal_form.input :nombre_jours, label: false, placeholder: "Nombre de jours de disponibilité"
+        %td= proposal_form.input :date_arrivee, as: :string, :input_html => {:class => 'datepicker'}, label: false, placeholder: "Date d'arrivée"
+        %td= proposal_form.link_to_remove "Supprimer cette proposition", :class => 'btn btn-danger'
+  %p= f.link_to_add "Ajouter une proposition", :proposals, data: { target: "#proposals" }, :class => 'btn btn-primary'
   .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), lists_path, :class => 'btn'
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to "Annuler", lists_path, :class => 'btn'
+:javascript
+  $(document).on('nested:fieldAdded', function(event){
+    $(".datepicker").datepicker({
+      dateFormat: "dd-mm-yy",
+      showWeek: true,
+      firstDay: 1,
+      showAnim: "slideDown"
+    });
+  }); ;

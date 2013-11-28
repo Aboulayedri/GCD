@@ -11,5 +11,7 @@
 
 class List < ActiveRecord::Base
   belongs_to :week
+  has_many :proposals
+  accepts_nested_attributes_for :proposals, :allow_destroy => true
   validates :name, presence: true, uniqueness: true
 end
